@@ -49,10 +49,6 @@ server.post('/projects/:id/tasks', (req, res) => {
 
   const result = projects.find(id => id = id)
 
-  if(!result){
-    res.status(400).json({error: 'User not found'})
-  }
-
   projects[projects.indexOf(result)].tasks.push(title)
 
   return res.json(projects)
