@@ -32,7 +32,18 @@ function countRequest(req,res,next)
   console.timeEnd('Request time')
 }
 
-function checkExistingProject(req,res,next){}
+function checkExistingProject(req,res,next)
+{
+  const { id } = req.params
+
+  const projectID = projects.findIndex(project => project.id == id)
+
+  if(projectID === -1){
+    return res.status(400).json({error: 'Project not found'})
+  }
+
+  return next()
+}
 
 /**
  * Routes
@@ -51,7 +62,7 @@ server.post('/projects', countRequest, (req, res) => {
   return res.json(projects)
 })
 
-server.post('/projects/:id/tasks', countRequest, (req, res) => {
+server.post('/projects/:id/tasks', countRequest, checkExistingProject, (req, res) => {
   const { title } = req.body
   const { id } = req.params
 
@@ -62,7 +73,7 @@ server.post('/projects/:id/tasks', countRequest, (req, res) => {
   return res.json(projects)
 })
 
-server.put('/projects/:id', countRequest, (req, res) => {
+server.put('/projects/:id', countRequest, checkExistingProject, (req, res) => {
   const { title } = req.body
   const { id } = req.params
 
@@ -74,7 +85,7 @@ server.put('/projects/:id', countRequest, (req, res) => {
 
 })
 
-server.delete('/projects/:id', countRequest, (req, res) => {
+server.delete('/projects/:id', countRequest, checkExistingProject, (req, res) => {
   const { id } = req.params
 
   const projectId = projects.findIndex(project => project.id == id)
