@@ -2,6 +2,8 @@
 const express = require('express')
 //Create a server instancy
 const server = express()
+//Work with JSON format
+server.use(express.json())
 
 /**
  * Variables
