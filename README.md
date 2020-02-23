@@ -1,5 +1,9 @@
 # NodeJS: Proof of Concept
 
+[![Download](https://poser.pugx.org/ali-irawan/xtra/d/total.svg)](https://poser.pugx.org/ali-irawan/xtra/d/total.svg)
+[![Stable](https://poser.pugx.org/ali-irawan/xtra/v/stable.svg)](https://poser.pugx.org/ali-irawan/xtra/v/stable.svg)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+
 A short NodeJS application for testing some development concepts such as http requests using express and the use of middlewares for entry validation.
 
 ## Getting Started
