@@ -8,27 +8,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You just need to have a **Node** version installed on your machine. In the case you don't have one, follow these [instructions](https://nodejs.org/en/download/package-manager/)
+You just need to have a **Node** version installed on your machine. In the case you don't have one, follow these [instructions](https://nodejs.org/en/download/package-manager/).
 
-With **Node** installed on your machine, clone this repository and then run this command on terminal inside the root project:
-```shell
-yarn install & yarn dev
-```
+This application don't have a graphic interface, so you will need a tool for making the requests. There's many tools on the Internet, but I like these one: **Insomnia** and you can learn how to install it [here](https://insomnia.rest/download/) 
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+With **Node** installed on your machine, clone this repository and then run this command on terminal inside the root project:
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
+```shell
+yarn install & yarn dev
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
