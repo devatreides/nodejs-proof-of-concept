@@ -66,7 +66,15 @@ server.put('/projects/:id', (req, res) => {
 
 })
 
-// server.delete()
+server.delete('/projects/:id', (req, res) => {
+  const { id } = req.params
+
+  const projectId = projects.findIndex(project => project.id == id)
+
+  projects.splice(projectId, 1)
+
+  return res.send()
+})
 
 
 //Start the server
