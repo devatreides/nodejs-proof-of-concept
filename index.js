@@ -47,14 +47,24 @@ server.post('/projects/:id/tasks', (req, res) => {
   const { title } = req.body
   const { id } = req.params
 
-  const result = projects.find(id => id = id)
+  const projectId = projects.findIndex(project => project.id == id)
 
-  projects[projects.indexOf(result)].tasks.push(title)
+  projects[projectId].tasks.push(title)
 
   return res.json(projects)
 })
 
-// server.put()
+server.put('/projects/:id', (req, res) => {
+  const { title } = req.body
+  const { id } = req.params
+
+  const projectId = projects.findIndex(project => project.id == id)
+
+  projects[projectId].title = title
+
+  return res.json(projects)
+
+})
 
 // server.delete()
 
