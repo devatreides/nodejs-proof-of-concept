@@ -45,6 +45,25 @@ function checkExistingProject(req,res,next)
   return next()
 }
 
+function checkPostEntrys(req,res,next)
+{
+  const { id, title } = req.body
+
+  if(req.url == '/projects'){
+    if(!id || !title){
+      return res.status(400).json({error: 'Parameters missing'})
+    }
+  }
+
+  if (req.url == `/projects/${req.params.id}/tasks`){
+    if(!title){
+      return res.status(400).json({error: 'Parameters missing'})
+    }
+  }
+
+  return next()
+}
+
 /**
  * Routes
  */
@@ -52,7 +71,7 @@ server.get('/projects', countRequest, (req, res) => {
   return res.json(projects)
 })
 
-server.post('/projects', countRequest, (req, res) => {
+server.post('/projects', countRequest, checkPostEntrys, (req, res) => {
   const { id, title } = req.body
 
   const project = {id: id, title: title, tasks: []}
@@ -62,7 +81,7 @@ server.post('/projects', countRequest, (req, res) => {
   return res.json(projects)
 })
 
-server.post('/projects/:id/tasks', countRequest, checkExistingProject, (req, res) => {
+server.post('/projects/:id/tasks', countRequest, checkExistingProject, checkPostEntrys, (req, res) => {
   const { title } = req.body
   const { id } = req.params
 
