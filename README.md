@@ -22,58 +22,98 @@ yarn install & yarn dev
 
 If you don't see any errors in the execution of the command above, open a browser and type this url: `http://localhost:3000/projects`. You should see something like this:
 
-![](https://github.com/tombenevides/nodejs-1proof-of-concept/blob/master/.github/projects-browser.png)
+![](.github/projects-browser.png)
 
-## Running the tests
+If you like this kinda JSON presentation on the browser (In the case, Google Chrome), use the extension **JSON Viewer**. You can find it [here](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?hl=pt-BR) 
 
-Explain how to run the automated tests for this system
+## Working with the Application
 
-### Break down into end to end tests
+The operation of this application is very simple. We have five routes and you can manipulate data of an excuting time array, using the **non-blocking IO** concept from **Node**. If you want to know more about this concept, click [here](https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/)
 
-Explain what these tests test and why
+### The Routes
 
+The application have five routes that implements a **CRUD** (Create-Read-Update-Delete) for projects, a fake form with some simple data: id, title and a list of tasks. Below, there are a short description of each route.
+
+
+- **[GET] /projects :** This route list all the projects saved on the server. For default, it begins with one project and the return is a list like this:
+
+```json
+[
+  {
+    id: 1,
+    title: "Project 1",
+    tasks: [
+      "task 1",
+      "task 2"
+    ]
+  }
+]
 ```
-Give an example
+
+- **[POST] /projects :** This route insert a new project on the server and demands 2 entrys: the **id** and the **title** of the project. The data is send to the server in a JSON format, like below:
+
+```json
+{
+  "id": 1,
+  "title": "Project 2"
+}
 ```
 
-### And coding style tests
+- **[POST] /projects/:id/tasks :** This route insert a new task in some project and demands 2 entrys: the **id** (using query params) and the **title** (use request body) of the project. The title is send to the server in a JSON format, like below:
 
-Explain what these tests test and why
-
+```json
+{
+  "title": "Some Task To Do"
+}
 ```
-Give an example
+
+- **[PUT] /projects/:id :** This route edit a specific project, but only the title. It demands 2 entrys: the **id** (using query params) and the new **title** for the project. The title data is send to the server in a JSON format, like below:
+
+```json
+{
+  "title": "New Project title"
+}
 ```
 
-## Deployment
+- **[DELETE] /projects:id :** This route deletes a specific project. It demands a entry: the **id** (using query params):
 
-Add additional notes about how to deploy this on a live system
+### The Middlewares
+
+By definition, **middleware** is a software that serves common resources to multiple applications. Using the same principle, we have some functions that serves common resources to multiple requests, such as logging and validation. This project have 3 middlewares: **countRequest**, **checkExistingProject** and **checkPostEntrys**.
+
+- The middleware **countRequests()** log the application printing some data about the request, besides the number of requests made so far to the server. It prints something like this:
+
+```shell
+1 requests so far
+method: GET; URL: /projects
+Request time: 6.112ms
+```
+
+- The middleware **checkExistingProject()** checks if a project exists on the server based on the id parameter passed from client. If everything is OK, the execution go on, but if is not, a message with http 400 status code will be returned like this:
+
+```json
+{
+  error: "Project not found"
+}
+```
+
+- The middleware **checkPostEntrys()** checks if the entrys of a request matches with is expected from the request url. If everything is OK, the execution go on, but if is not, a message with http 400 status code will be returned like this:
+
+```json
+{
+  error: "Parameters missing"
+}
+```
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [NodeJS](https://nodejs.org/en/about/) - The interpreter used
+* [Express](http://expressjs.com/) - The framework used
 
-## Contributing
+## Author
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Tom Benevides** - *Like a A barber in Seville* ([Dev.to](https://dev.to/tombenevides) - [Instagram](https://instagram.com/tombenevides3))
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
