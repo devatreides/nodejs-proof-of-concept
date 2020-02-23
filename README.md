@@ -20,7 +20,9 @@ With **Node** installed on your machine, clone this repository and then run this
 yarn install & yarn dev
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+If you don't see any errors in the execution of the command above, open a browser and type this url: `http://localhost:3000/projects`. You should see something like this:
+
+![](https://github.com/tombenevides/nodejs-1proof-of-concept/blob/master/.github/projects-browser.png)
 
 ## Running the tests
 
