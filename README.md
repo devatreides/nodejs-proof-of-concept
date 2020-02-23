@@ -1,6 +1,6 @@
-# NodeJS: 1º Proof of Concept
+# NodeJS: Proof of Concept
 
-A short NodeJS application for testing some development concepts such as http requests using express and the use of middlewares for entry validation
+A short NodeJS application for testing some development concepts such as http requests using express and the use of middlewares for entry validation.
 
 ## Getting Started
 
@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 You just need to have a **Node** version installed on your machine. In the case you don't have one, follow these [instructions](https://nodejs.org/en/download/package-manager/).
 
-This application don't have a graphic interface, so you will need a tool for making the requests. There's many tools on the Internet, but I like these one: **Insomnia** and you can learn how to install it [here](https://insomnia.rest/download/) 
+This application don't have a graphic interface, so you will need a tool for making the requests. There's many tools on the Internet, but I like these one: **Insomnia** and you can learn how to install it [here](https://insomnia.rest/download/). 
 
 ### Installing
 
@@ -24,15 +24,15 @@ If you don't see any errors in the execution of the command above, open a browse
 
 ![](.github/projects-browser.png)
 
-If you like this kinda JSON presentation on the browser (In the case, Google Chrome), use the extension **JSON Viewer**. You can find it [here](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?hl=pt-BR) 
+If you like this kinda JSON presentation on the browser (In the case, Google Chrome), use the extension **JSON Viewer**. You can find it [here](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?hl=pt-BR). 
 
 ## Working with the Application
 
-The operation of this application is very simple. We have five routes and you can manipulate data of an excuting time array, using the **non-blocking IO** concept from **Node**. If you want to know more about this concept, click [here](https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/)
+The operation of this application is very simple. We have five routes and you can manipulate data of an excuting time array, using the **non-blocking IO** concept from **Node**. If you want to know more about this concept, click [here](https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/).
 
 ### The Routes
 
-The application have five routes that implements a **CRUD** (Create-Read-Update-Delete) for projects, a fake form with some simple data: id, title and a list of tasks. Below, there are a short description of each route.
+The application have five routes that implements a **CRUD** (Create-Read-Update-Delete) for projects, a fake form with some simple data: id, title and a list of tasks. Below, there is a short description of each route.
 
 
 - **[GET] /projects :** This route list all the projects saved on the server. For default, it begins with one project and the return is a list like this:
@@ -40,9 +40,9 @@ The application have five routes that implements a **CRUD** (Create-Read-Update-
 ```json
 [
   {
-    id: 1,
-    title: "Project 1",
-    tasks: [
+    "id": 1,
+    "title": "Project 1",
+    "tasks": [
       "task 1",
       "task 2"
     ]
@@ -75,7 +75,7 @@ The application have five routes that implements a **CRUD** (Create-Read-Update-
 }
 ```
 
-- **[DELETE] /projects:id :** This route deletes a specific project. It demands a entry: the **id** (using query params):
+- **[DELETE] /projects:id :** This route deletes a specific project. It demands an entry: the **id** (using query params).
 
 ### The Middlewares
 
@@ -93,15 +93,15 @@ Request time: 6.112ms
 
 ```json
 {
-  error: "Project not found"
+  "error": "Project not found"
 }
 ```
 
-- The middleware **checkPostEntrys()** checks if the entrys of a request matches with is expected from the request url. If everything is OK, the execution go on, but if is not, a message with http 400 status code will be returned like this:
+- The middleware **checkPostEntrys()** checks if the entrys of a request matches wich is expected from the request url. If everything is OK, the execution go on, but if is not, a message with http 400 status code will be returned like this:
 
 ```json
 {
-  error: "Parameters missing"
+  "error": "Parameters missing"
 }
 ```
 
@@ -112,7 +112,7 @@ Request time: 6.112ms
 
 ## Author
 
-* **Tom Benevides** - *Like a A barber in Seville* ([Dev.to](https://dev.to/tombenevides) - [Instagram](https://instagram.com/tombenevides3))
+* **Tom Benevides** - *Like a barber in Seville* ([Dev.to](https://dev.to/tombenevides) - [Instagram](https://instagram.com/tombenevides3))
 
 ## License
 
