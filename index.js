@@ -43,7 +43,20 @@ server.post('/projects', (req, res) => {
   return res.json(projects)
 })
 
-// server.post()
+server.post('/projects/:id/tasks', (req, res) => {
+  const { title } = req.body
+  const { id } = req.params
+
+  const result = projects.find(id => id = id)
+
+  if(!result){
+    res.status(400).json({error: 'User not found'})
+  }
+
+  projects[projects.indexOf(result)].tasks.push(title)
+
+  return res.json(projects)
+})
 
 // server.put()
 
