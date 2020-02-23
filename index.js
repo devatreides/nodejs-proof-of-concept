@@ -17,23 +17,31 @@ const projects = [
   }
 ]
 //Number of requests made during an execution of the server
-const requests = 0
+let requests = 0
 
 /**
  * Middlewares
  */
-function countRequest(req,res,next){}
+function countRequest(req,res,next)
+{
+  requests++
+  console.log(`${requests} requests so far`)
+  console.log(`method: ${req.method}; URL: ${req.url}`)
+  console.time('Request time')
+  next()
+  console.timeEnd('Request time')
+}
 
 function checkExistingProject(req,res,next){}
 
 /**
  * Routes
  */
-server.get('/projects', (req, res) => {
+server.get('/projects', countRequest, (req, res) => {
   return res.json(projects)
 })
 
-server.post('/projects', (req, res) => {
+server.post('/projects', countRequest, (req, res) => {
   const { id, title } = req.body
 
   const project = {id: id, title: title, tasks: []}
@@ -43,7 +51,7 @@ server.post('/projects', (req, res) => {
   return res.json(projects)
 })
 
-server.post('/projects/:id/tasks', (req, res) => {
+server.post('/projects/:id/tasks', countRequest, (req, res) => {
   const { title } = req.body
   const { id } = req.params
 
@@ -54,7 +62,7 @@ server.post('/projects/:id/tasks', (req, res) => {
   return res.json(projects)
 })
 
-server.put('/projects/:id', (req, res) => {
+server.put('/projects/:id', countRequest, (req, res) => {
   const { title } = req.body
   const { id } = req.params
 
@@ -66,7 +74,7 @@ server.put('/projects/:id', (req, res) => {
 
 })
 
-server.delete('/projects/:id', (req, res) => {
+server.delete('/projects/:id', countRequest, (req, res) => {
   const { id } = req.params
 
   const projectId = projects.findIndex(project => project.id == id)
