@@ -7,7 +7,13 @@ const server = express()
  * Variables
  */
 //List of Projects (Our "database")
-const projects = []
+const projects = [
+  {
+    id: 1,
+    title: 'Project 1',
+    tasks: ['Task 1','Task 2']
+  }
+]
 //Number of requests made during an execution of the server
 const requests = 0
 
@@ -21,15 +27,17 @@ function checkExistingProject(req,res,next){}
 /**
  * Routes
  */
-server.get()
+server.get('/projects', (req, res) => {
+  return res.json(projects)
+})
 
-server.post()
+// server.post()
 
-server.post()
+// server.post()
 
-server.put()
+// server.put()
 
-server.delete()
+// server.delete()
 
 
 //Start the server
