@@ -33,7 +33,15 @@ server.get('/projects', (req, res) => {
   return res.json(projects)
 })
 
-// server.post()
+server.post('/projects', (req, res) => {
+  const { id, title } = req.body
+
+  const project = {id: id, title: title, tasks: []}
+
+  projects.push(project)
+
+  return res.json(projects)
+})
 
 // server.post()
 
