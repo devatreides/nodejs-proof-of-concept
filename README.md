@@ -1,8 +1,13 @@
 # NodeJS: Proof of Concept
 
-[![Download](https://poser.pugx.org/ali-irawan/xtra/d/total.svg)](https://poser.pugx.org/ali-irawan/xtra/d/total.svg)
-[![Stable](https://poser.pugx.org/ali-irawan/xtra/v/stable.svg)](https://poser.pugx.org/ali-irawan/xtra/v/stable.svg)
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+![GitHub top language](https://img.shields.io/github/languages/top/tombenevides/nodejs-proof-of-concept)
+![GitHub last commit](https://img.shields.io/github/last-commit/tombenevides/nodejs-proof-of-concept)
+![GitHub Release Date](https://img.shields.io/github/release-date/tombenevides/nodejs-proof-of-concept)
+![GitHub issues](https://img.shields.io/github/issues/tombenevides/nodejs-proof-of-concept)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/tombenevides/nodejs-proof-of-concept)
+![GitHub contributors](https://img.shields.io/github/contributors/tombenevides/nodejs-proof-of-concept)
+![GitHub All Releases](https://img.shields.io/github/downloads/tombenevides/nodejs-proof-of-concept/total)
+![GitHub](https://img.shields.io/github/license/tombenevides/nodejs-proof-of-concept)
 
 A short NodeJS application for testing some development concepts such as http requests using express and the use of middlewares for entry validation.
 
